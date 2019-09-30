@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');           //自動產�
 const CopyPlugin = require('copy-webpack-plugin');                  //複製目錄
 const WriteFilePlugin = require('write-file-webpack-plugin');      //執行devServer時輸出檔案
 const SpritesmithPlugin = require('webpack-spritesmith');           //CSS Sprite
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     mode: process.env.NODE_ENV || 'development',
@@ -148,7 +149,8 @@ module.exports = {
                 flatten: true
             }
         ]),
-        new WriteFilePlugin()
+        new WriteFilePlugin(),
+        new UglifyJsPlugin()
     ],
     devServer: {
         open: true,
